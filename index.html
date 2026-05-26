@@ -1,31 +1,293 @@
-# Datenschutzerklärung – Trekky
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trekky – Abonnements verwalten</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-**Zuletzt aktualisiert: Mai 2026**
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0d0d14;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
 
-## Deine Daten gehören dir
+        header {
+            background: linear-gradient(160deg, #1a1a2e, #0d0d14);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid #ffffff10;
+        }
 
-Trekky legt größten Wert auf den Schutz deiner Privatsphäre.
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #f5a623, #f07e00);
+            border-radius: 22px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 20px 60px rgba(245, 166, 35, 0.3);
+        }
 
-## Datenspeicherung
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
 
-Alle deine Daten – also Abonnements, Preise, Erinnerungen und Einstellungen – werden **ausschließlich auf deinem Gerät** gespeichert. Es gibt keinen Server, keine Datenbank und keine Cloud von uns, auf der deine Daten landen.
+        header p {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
 
-## iCloud Sync
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f5a623, #e8890c);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
 
-Wenn du die optionale iCloud-Synchronisierung aktivierst, werden deine Daten über **deine persönliche iCloud** auf deine anderen Geräte übertragen. Dabei gilt:
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px;
+            background: #111118;
+            border-bottom: 1px solid #ffffff0a;
+            flex-wrap: wrap;
+        }
 
-- Nur du hast Zugriff auf dein iCloud-Konto.
-- Die Daten sind durch Apple mit Ende-zu-Ende-Verschlüsselung geschützt.
-- Weder wir noch Dritte haben Zugang zu diesen Daten.
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
 
-## Keine Weitergabe
+        nav a:hover { background: #ffffff10; color: #fff; }
 
-Wir sammeln, übertragen oder verkaufen **keinerlei persönliche Daten**. Es findet keine Analyse, kein Tracking und keine Werbung statt.
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-## In-App-Kauf
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #ffffff08;
+        }
 
-Trekky bietet einen einmaligen In-App-Kauf ("Trekky Pro") an. Die Zahlungsabwicklung erfolgt ausschließlich über Apple und den App Store. Wir haben keinen Zugriff auf deine Zahlungsdaten.
+        section:last-child { border-bottom: none; }
 
-## Kontakt
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 24px;
+        }
 
-Bei Fragen zur Datenschutzerklärung kannst du uns über den App Store kontaktieren.
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 28px 0 10px;
+        }
+
+        p { color: #999; margin-bottom: 16px; }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .feature-card {
+            background: #ffffff06;
+            border: 1px solid #ffffff0a;
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .feature-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .feature-card h4 { color: #fff; font-size: 0.95rem; margin-bottom: 6px; }
+        .feature-card p { font-size: 0.85rem; margin: 0; }
+
+        .support-box {
+            background: #ffffff06;
+            border: 1px solid #ffffff0a;
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 24px;
+        }
+
+        .support-box a {
+            color: #f5a623;
+            text-decoration: none;
+        }
+
+        .support-box a:hover { text-decoration: underline; }
+
+        .privacy-section {
+            background: #ffffff04;
+            border-left: 3px solid #f5a62340;
+            border-radius: 0 8px 8px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .privacy-section h3 { margin-top: 0; color: #f5a623; }
+
+        ul { padding-left: 20px; color: #999; }
+        ul li { margin-bottom: 8px; }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #444;
+            font-size: 0.85rem;
+            border-top: 1px solid #ffffff08;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="app-icon">📊</div>
+    <h1>Trekky</h1>
+    <p>Alle deine Abonnements auf einen Blick. Erinnerungen, Übersicht, Kontrolle.</p>
+    <span class="badge">Verfügbar im App Store</span>
+</header>
+
+<nav>
+    <a href="#features">Features</a>
+    <a href="#support">Support</a>
+    <a href="#privacy">Datenschutz</a>
+</nav>
+
+<div class="container">
+
+    <!-- FEATURES -->
+    <section id="features">
+        <h2>Was kann Trekky?</h2>
+        <p>Trekky hilft dir den Überblick über all deine Abonnements zu behalten — von Netflix bis Fitnessstudio. Verpasse nie wieder eine Abbuchung oder eine Kündigungsfrist.</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="icon">📋</div>
+                <h4>Alle Abos im Blick</h4>
+                <p>Verwalte alle deine Abonnements zentral an einem Ort.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔔</div>
+                <h4>Erinnerungen</h4>
+                <p>Benachrichtigungen vor Abbuchungen und Kündigungsfristen.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">☁️</div>
+                <h4>iCloud Sync</h4>
+                <p>Deine Abos auf all deinen Apple-Geräten synchronisiert.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔒</div>
+                <h4>Privatsphäre</h4>
+                <p>Deine Daten bleiben ausschließlich auf deinem Gerät.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">💶</div>
+                <h4>Kostenübersicht</h4>
+                <p>Monatliche und jährliche Ausgaben auf einen Blick.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎨</div>
+                <h4>Individuell</h4>
+                <p>Eigene Bilder und Farben für jedes Abonnement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUPPORT -->
+    <section id="support">
+        <h2>Support</h2>
+        <p>Hast du Fragen, Probleme oder Verbesserungsvorschläge? Ich helfe dir gerne weiter.</p>
+
+        <div class="support-box">
+            <h3 style="color:#fff; margin-top:0;">Kontakt</h3>
+            <p>Schreib mir einfach eine E-Mail — ich melde mich so schnell wie möglich:</p>
+            <p><strong><a href="mailto:shaka.marone@gmail.com">shaka.marone@gmail.com</a></strong></p>
+
+            <h3 style="color:#fff;">Häufige Fragen</h3>
+
+            <h4 style="color:#ccc; margin: 16px 0 6px;">Wie stelle ich Erinnerungen ein?</h4>
+            <p>Öffne die Einstellungen in Trekky und aktiviere Benachrichtigungen. Pro Abo kannst du festlegen, wie viele Tage vorher du erinnert werden möchtest.</p>
+
+            <h4 style="color:#ccc; margin: 16px 0 6px;">Funktioniert iCloud Sync automatisch?</h4>
+            <p>iCloud Sync kann in den Einstellungen aktiviert werden. Danach werden Änderungen automatisch auf all deine Geräte übertragen.</p>
+
+            <h4 style="color:#ccc; margin: 16px 0 6px;">Was passiert nach dem Kauf von Trekky Pro?</h4>
+            <p>Mit Trekky Pro kannst du unbegrenzt viele Abonnements hinzufügen. Es ist eine einmalige Zahlung — kein Abo, keine versteckten Kosten.</p>
+
+            <h4 style="color:#ccc; margin: 16px 0 6px;">Wie stelle ich einen Kauf wieder her?</h4>
+            <p>In der Paywall gibt es den Button "Kauf wiederherstellen". Damit wird dein Pro-Kauf automatisch erkannt.</p>
+        </div>
+    </section>
+
+    <!-- DATENSCHUTZ -->
+    <section id="privacy">
+        <h2>Datenschutzerklärung</h2>
+        <p>Zuletzt aktualisiert: Mai 2026</p>
+
+        <div class="privacy-section">
+            <h3>🔒 Deine Daten gehören dir</h3>
+            <p>Trekky legt größten Wert auf den Schutz deiner Privatsphäre. Alle deine Daten – Abonnements, Preise, Erinnerungen und Einstellungen – werden <strong>ausschließlich auf deinem Gerät</strong> gespeichert. Es gibt keinen Server, keine Datenbank und keine Cloud von uns, auf der deine Daten landen.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h3>☁️ iCloud Sync</h3>
+            <p>Wenn du die optionale iCloud-Synchronisierung aktivierst, werden deine Daten über <strong>deine persönliche iCloud</strong> übertragen. Dabei gilt:</p>
+            <ul>
+                <li>Nur du hast Zugriff auf dein iCloud-Konto.</li>
+                <li>Die Daten sind durch Apple mit Ende-zu-Ende-Verschlüsselung geschützt.</li>
+                <li>Weder wir noch Dritte haben Zugang zu diesen Daten.</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h3>🚫 Keine Weitergabe</h3>
+            <p>Wir sammeln, übertragen oder verkaufen <strong>keinerlei persönliche Daten</strong>. Es findet keine Analyse, kein Tracking und keine Werbung statt.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h3>💳 In-App-Kauf</h3>
+            <p>Trekky bietet einen einmaligen In-App-Kauf ("Trekky Pro") an. Die Zahlungsabwicklung erfolgt ausschließlich über Apple und den App Store. Wir haben keinen Zugriff auf deine Zahlungsdaten.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h3>✉️ Kontakt</h3>
+            <p>Bei Fragen zur Datenschutzerklärung erreichst du uns unter: <a href="mailto:shaka.marone@gmail.com" style="color:#f5a623;">shaka.marone@gmail.com</a></p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Trekky · <a href="#privacy" style="color:#666; text-decoration:none;">Datenschutz</a> · <a href="#support" style="color:#666; text-decoration:none;">Support</a></p>
+</footer>
+
+</body>
+</html>
